@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact | ConnectHub</title>
+    <style>
+        /* Shared Styles */
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        h2 { text-align: center; margin-bottom: 25px; }
+
+        /* Form Styling */
+        form { display: flex; flex-direction: column; gap: 15px; }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+        }
+
+        input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+        button {
+            padding: 12px;
+            background: #00d2ff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover { background: #3a7bd5; transform: scale(1.02); }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container">
+        <h2>Add New Contact</h2>
+        
+        <form action="/add-contact" method="POST">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Phone">
+            <textarea name="address" placeholder="Address" rows="3"></textarea>
+            <button type="submit">Save Contact</button>
+        </form>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+
+</body>
+</html>

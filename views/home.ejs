@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectHub | Contacts</title>
+    <style>
+        /* Modern Reset & Background */
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Styled Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Row Hover Transition */
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.01);
+        }
+
+        /* Action Buttons Styling */
+        .action-links a {
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .action-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Add Button */
+        .btn-add {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #00d2ff;
+            background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);
+            background: linear-gradient(to right, #3a7bd5, #00d2ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>ConnectHub</h2>
+
+    <a href="/add-contact" class="btn-add">+ Add New Contact</a>
+
+    <div class="glass-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th> 
+                    <th>Phone</th> 
+                    <th>Address</th> 
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (contacts && contacts.length > 0) { %>
+                    <% contacts.forEach(contact => { %>
+                        <tr>
+                            <td><%= contact.first_name %></td>
+                            <td><%= contact.last_name %></td>
+                            <td><%= contact.email %></td> 
+                            <td><%= contact.phone %></td> 
+                            <td><%= contact.address %></td> 
+                            <td class="action-links">
+                                <a href="/show-contact/<%= contact._id %>" title="View">👁️</a>
+                                <a href="/update-contact/<%= contact._id %>" title="Edit">✏️</a>
+                                <a href="/delete-contact/<%= contact._id %>" title="Delete" style="filter: grayscale(1) brightness(1.5);">❌</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px; opacity: 0.6;">
+                            No contacts found. Start by adding one!
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div> 
+    </table>
+
+        <div style="
+            margin-top: 40px; 
+            padding-top: 20px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            text-align: right;
+            font-size: 0.9rem;
+            opacity: 0.7;">
+            <p>Developed with 💙 by <strong>Koushik PJ</strong></p>
+        </div>
+    </div>
+
+</body>
+</html>

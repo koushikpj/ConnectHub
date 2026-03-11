@@ -1,0 +1,6 @@
+<h2>Delete <%= contact.first_name %> <%= contact.last_name %>?</h2>
+<form action="/delete-contact" method="POST">
+  <input type="hidden" name="id" value="<%= contact._id %>">
+  <button type="submit">Confirm Delete</button>
+  <a href="/">Cancel</a>
+</form>

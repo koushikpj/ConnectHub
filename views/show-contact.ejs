@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details | ConnectHub</title>
+    <style>
+        /* Shared Styles */
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        h2 { text-align: center; margin-bottom: 30px; }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container">
+        <h2>Contact Details</h2>
+
+        <% if (typeof contact !== 'undefined' && contact) { %>
+            <div class="detail-item"><strong>First Name:</strong> <%= contact.first_name %></div>
+            <div class="detail-item"><strong>Last Name:</strong> <%= contact.last_name %></div>
+            <div class="detail-item"><strong>Email:</strong> <%= contact.email %></div>
+            <div class="detail-item"><strong>Phone:</strong> <%= contact.phone %></div>
+            <div class="detail-item"><strong>Address:</strong> <%= contact.address %></div>
+        <% } else { %>
+            <p style="text-align: center;">Error: Contact data could not be found.</p>
+        <% } %>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+
+</body>
+</html>
